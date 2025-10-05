@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptMaster - Générateur de Prompts IA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-magic"></i>
+                <span>PromptMaster</span>
+            </div>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('home')">Accueil</a></li>
+                <li><a onclick="scrollToSection('features')">Fonctionnalités</a></li>
+                <li><a onclick="scrollToSection('generator')">Générateur</a></li>
+                <li><a onclick="scrollToSection('guide')">Guide</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a onclick="scrollToSection('home')">Accueil</a>
+            <a onclick="scrollToSection('features')">Fonctionnalités</a>
+            <a onclick="scrollToSection('generator')">Générateur</a>
+            <a onclick="scrollToSection('guide')">Guide</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Créez des Prompts IA<br>Puissants en Quelques Clics</h1>
+        <p>Maîtrisez l'art du prompt engineering avec notre générateur intelligent</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="scrollToSection('generator')">Commencer Gratuitement</button>
+            <button class="btn btn-secondary" onclick="scrollToSection('guide')">Voir le Guide</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-title">
+            <h2>Fonctionnalités Puissantes</h2>
+            <p>Tout ce dont vous avez besoin pour créer des prompts parfaits</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card gradient-1">
+                <h3>Structure Optimale</h3>
+                <p>Génération automatique avec rôle, contexte et contraintes</p>
+            </div>
+            <div class="feature-card gradient-2">
+                <h3>Techniques Avancées</h3>
+                <p>Chain-of-Thought et raisonnement étape par étape</p>
+            </div>
+            <div class="feature-card gradient-3">
+                <h3>Limite 4000 Caractères</h3>
+                <p>Compteur en temps réel avec alerte</p>
+            </div>
+            <div class="feature-card gradient-4">
+                <h3>Personnalisation Totale</h3>
+                <p>Ton, format, longueur - adaptez tout</p>
+            </div>
+            <div class="feature-card gradient-5">
+                <h3>Copie Instantanée</h3>
+                <p>Un clic pour copier et utiliser</p>
+            </div>
+            <div class="feature-card gradient-6">
+                <h3>Guide Intégré</h3>
+                <p>Apprenez les meilleures pratiques</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generator Section -->
+    <section id="generator" class="generator">
+        <div class="section-title">
+            <h2>Générateur de Prompts</h2>
+            <p>Créez votre prompt parfait en quelques étapes</p>
+        </div>
+        <div class="generator-container">
+            <div class="generator-grid">
+                <!-- Form -->
+                <div>
+                    <div class="form-group">
+                        <label for="role">Rôle / Persona</label>
+                        <input type="text" id="role" placeholder="ex: un expert en marketing digital">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="context">Contexte</label>
+                        <textarea id="context" rows="2" placeholder="Décris le contexte..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task">Tâche / Objectif *</label>
+                        <textarea id="task" rows="3" placeholder="Décris précisément ce que l'IA doit faire..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tone">Ton</label>
+                            <select id="tone">
+                                <option value="professionnel">Professionnel</option>
+                                <option value="casual">Casual</option>
+                                <option value="technique">Technique</option>
+                                <option value="créatif">Créatif</option>
+                                <option value="pédagogique">Pédagogique</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="format">Format</label>
+                            <select id="format">
+                                <option value="paragraphe">Paragraphe</option>
+                                <option value="liste">Liste</option>
+                                <option value="étapes">Étapes</option>
+                                <option value="tableau">Tableau</option>
+                                <option value="json">JSON</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="length">Longueur</label>
+                        <input type="text" id="length" placeholder="ex: 300 mots">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="examples">Exemples</label>
+                        <textarea id="examples" rows="2" placeholder="Fournis des exemples..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="constraints">Contraintes</label>
+                        <textarea id="constraints" rows="2" placeholder="ex: Évite le jargon"></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="reasoning">
+                            <span>Raisonnement étape par étape</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="iteration">
+                            <span>Plusieurs variations</span>
+                        </label>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-generate" onclick="generatePrompt()">
+                            <i class="fas fa-magic"></i>
+                            Générer le Prompt
+                        </button>
+                        <button class="btn-reset" onclick="resetForm()">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Output -->
+                <div>
+                    <div class="output-header">
+                        <label style="font-weight: 600; color: #374151; font-size: 0.875rem;">Prompt généré</label>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="char-count" id="charCount">0 / 4000</span>
+                            <button class="btn-copy" id="copyBtn" onclick="copyToClipboard()" style="display: none;">
+                                <i class="fas fa-copy"></i>
+                                <span id="copyText">Copier</span>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="generatedPrompt" readonly placeholder="Ton prompt apparaîtra ici..."></textarea>
+                    <p class="warning-message" id="warningMessage" style="display: none;">
+                        ⚠️ Le prompt dépasse 4000 caractères
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Section -->
+    <section id="guide" class="guide">
+        <div class="section-title">
+            <h2>Guide du Prompt Engineering</h2>
+            <p>Les principes essentiels</p>
+        </div>
+        <div class="guide-container">
+            <div class="guide-card border-purple">
+                <h3>🎯 Clarté et Spécificité</h3>
+                <p>Plus votre prompt est clair et spécifique, meilleure sera la réponse</p>
+            </div>
+            <div class="guide-card border-blue">
+                <h3>🧠 Chain-of-Thought</h3>
+                <p>Demandez à l'IA d'expliquer son raisonnement étape par étape</p>
+            </div>
+            <div class="guide-card border-indigo">
+                <h3>📝 Définir le Format</h3>
+                <p>Spécifiez comment vous voulez recevoir la réponse</p>
+            </div>
+            <div class="guide-card border-pink">
+                <h3>💡 Utiliser des Exemples</h3>
+                <p>Les exemples aident l'IA à comprendre vos attentes</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>PromptMaster 2025 - Créez des prompts IA exceptionnels</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
